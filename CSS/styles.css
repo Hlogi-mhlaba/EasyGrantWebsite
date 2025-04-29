@@ -1,0 +1,297 @@
+/* ---------- General Setup ---------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* ---------- General Setup ---------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Sliding Header Setup */
+.sliding-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Adjust darkness here */
+  z-index: 1;
+}
+
+.sliding-header {
+  position: relative;
+  height: 100vh; /* Full screen height */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sliding-header .background-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+.sliding-header .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeSlide 18s infinite;
+}
+
+/* Individual background images */
+.sliding-header .bg1 {
+  background-image: url('../images/queue1.jpg');
+  animation-delay: 0s;
+}
+.sliding-header .bg2 {
+  background-image: url('../images/queue2.jpg');
+  animation-delay: 6s;
+}
+.sliding-header .bg3 {
+  background-image: url('../images/queue3.jpg');
+  animation-delay: 12s;
+}
+
+
+/* Content on top of background */
+.sliding-header .content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+/* Fade animation */
+@keyframes fadeSlide {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  30% { opacity: 1; }
+  38% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.glow-text {
+  position: relative;
+  font-weight: bold;
+  color: white;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Glowing overlay using a blurred pseudo-element */
+.glow-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.7;
+  background: linear-gradient(270deg, red, yellow, green, blue, red);
+  background-size: 800% 800%;
+  animation: glowFlow 8s ease infinite;
+  border-radius: 10px;
+}
+
+@keyframes glowFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+/* ---------- Navigation Glow ---------- */
+nav a {
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #fff, 0 0 16px #0ff, 0 0 24px #0ff;
+}
+
+/* ---------- Glowing Buttons ---------- */
+.glow-button {
+  padding: 10px 20px;
+  color: rgb(145, 163, 154);
+  background: #222;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.4s;
+  box-shadow: 0 0 5px rgb(137, 220, 246);
+}
+
+.glow-button:hover {
+  background: rgb(161, 235, 250);
+  color: #000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+}
+
+/* ---------- Glowing Background (Book Section) ---------- */
+.booking-section {
+  background: linear-gradient(135deg, #1c1c1c, #2b3845);
+  color: white;
+  padding: 60px 20px;
+  /*border-top: 5px solid #728fac;
+  border-bottom: 5px solid #728fac;-- */
+  position: relative;
+  overflow: hidden;
+}
+
+.booking-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(61, 96, 119, 0.3), transparent 70%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.booking-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.queue-status-section {
+  background: linear-gradient(135deg,#1c1c1c,#2b3845, #3a434b , #34495e, #241164);
+  color: white;
+  padding: 60px 20px;
+
+}
+
+.how-it-works-section {
+  background: linear-gradient(225deg,  #241164, #fb2b14); /* Blue to Red */
+  color: white;
+  padding: 60px 20px;
+
+
+}
+
+.notifications-section {
+  background: linear-gradient(135deg, #fb2b14, #f1c40f); /* Red to Rich Yellow */
+  color: white;
+  padding: 60px 20px;
+
+}
+
+.FAQs-section {
+  background: linear-gradient(135deg, #f4f4f4, #f1c40f, #f1c40f);
+  color: white;
+  padding: 60px 20px;
+
+}
+
+/* ---------- Sliding Background (No more long queues section) ---------- */
+.sliding-bg {
+  background-image: url('images/queue1.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: slideImages 10s infinite ease-in-out;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+@keyframes slideImages {
+  0% {
+    background-image: url('images/queue1.jpg');
+  }
+  33% {
+    background-image: url('images/queue2.jpg');
+  }
+  66% {
+    background-image: url('images/queue3.jpg');
+  }
+  100% {
+    background-image: url('images/queue1.jpg');
+  }
+}
+
+/* ---------- Help Center Animated Background ---------- */
+.help-center {
+  position: relative;
+  overflow: hidden;
+  background-color: #111;
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+
+.help-center::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(circle, #0000FF 10%, transparent 51%),
+    radial-gradient(circle, #f1c40f 10%, transparent 31%),
+    radial-gradient(circle, #fb2b14 10%, transparent 51%),
+    radial-gradient(circle, #136f22 10%, transparent 21%),
+    radial-gradient(circle, #8e44ad 10%, transparent 11%);
+  background-size: 50px 50px;
+  background-position:
+    0 0,
+    25px 25px,
+    12px 37px,
+    37px 12px,
+    45px 45px;
+  animation: glowingDots 50s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes glowingDots {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    transform: rotate(360deg) translateX(0);
+  }
+}
+
+.help-center h2, .help-center p {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Optional: Smooth Transition for All Elements ---------- */
+* {
+  transition: all 0.3s ease-in-out;
+}

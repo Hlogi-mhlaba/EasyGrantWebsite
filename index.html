@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlowServe - Skip the Queue</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+
+      <!--a class="navbar-brand" href="#">EasyGrant</a-->
+
+
+        <img src="images/sassa1.png" alt="SASSA Logo" style="height: 80px;">
+        <h1 class="text-white" color >FlowServe</h1>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#"><h5>Home</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#book"><h5>Book</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#queue"><h5>Queue</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works"><h5>How It Works</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#notifications"><h5>Notifications</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq"><h5>FAQs</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#help"><h5>Help</h5></a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><h5>Contact</h5></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+ <!-- Header with sliding background -->
+<header class="sliding-header text-white text-center py-5">
+  <div class="background-slider">
+    <div class="slide bg1"></div>
+    <div class="slide bg2"></div>
+    <div class="slide bg3"></div>
+  </div>
+  <div class="container content">
+    <h1 class="display-4 glow-text"><b>No More Long Queues</b></h1>
+    <p class="lead">Book your grant collection time online and avoid the wait.</p>
+    <a href="#book" class="btn btn-light btn-lg mt-3">Book a Time Slot</a>
+  </div>
+</header>
+
+
+
+  <!-- Booking Section -->
+  <section id="book" class="booking-section text-white py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Book Your Grant Collection</h2>
+      <form id="bookingForm" class="row g-3 needs-validation" action="process_booking.php" method="POST" novalidate>
+        <div class="col-md-6">
+          <label for="fullname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullname" name="fullname" pattern="^[A-Za-z\s]+$" title="Full name must contain letters only" required>
+          <div class="invalid-feedback">Please enter your full name (letters only).</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="idnumber" class="form-label">ID Number</label>
+          <input type="text" class="form-control" id="idnumber" name="idnumber" pattern="\d{13}" required>
+          <div class="invalid-feedback">Enter a valid 13-digit South African ID number.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="cellnumber" class="form-label">Cellphone Number</label>
+          <input type="tel" class="form-control" id="cellphone" name="cellphone" pattern="[0-9]{10}" required>
+          <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="date" class="form-label">Select Date</label>
+          <input type="date" class="form-control" id="date" name="date" required>
+          <div class="invalid-feedback">Please select a date.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="time" class="form-label">Choose Time</label>
+          <input type="time" class="form-control" id="time" name="time" min="08:00" max="16:00" required>
+          <div class="invalid-feedback">Please select a time between 08:00 and 16:00.</div>
+        </div>
+
+        <div class="col-12 text-center">
+          <button type="submit" class="glow-button" id="confirmBookingBtn">Confirm Booking</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Queue Status Section -->
+<section id="queue" class="queue-status-section">
+  <div class="container text-white text-center py-5"">
+    <h2 class="display-5">Check Your Queue Position</h2>
+    <p class="text-center">Enter your ID number below to see your place in line.</p>
+    <form method="POST" action="check_queue.php">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" name="queueID" id="queueID" class="form-control mb-3" placeholder="Enter ID Number">
+        <button type="submit" class="btn btn-primary w-100">Check Queue</button>
+      </div>
+    </div>
+  </form>
+
+  </div>
+</section>
+
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works-section text-white text-center py-5">
+    <div class="container">
+      <h2 class="display-5">How It Works</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm h-100">
+            <h5 class="fw-bold">1. Book a Slot</h5>
+            <p>Choose a date and time to collect your grant money, avoiding busy periods.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm h-100">
+            <h5 class="fw-bold">2. Get Confirmation</h5>
+            <p>You’ll receive a confirmation with your collection time and queue position.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 border rounded shadow-sm h-100">
+            <h5 class="fw-bold">3. Skip the Line</h5>
+            <p>Arrive on time and skip long queues — your spot is already reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Notification Section-->
+  
+ <section id="notifications" class="notifications-section text-white text-center py-5">
+    <div class="container text-center">
+      <h2 class="mb-4">Notifications</h2>
+      <p>We’ll notify you via SMS or Email about your upcoming slot.</p>
+      <p>Check your recent messages below:</p>
+      <div class="alert alert-info" role="alert">
+         <strong>There are no funds till 31 April 2025</strong>.
+      </div>
+      <div class="alert alert-warning" role="alert">
+        ⚠️ Don’t forget to bring your ID and grant card.
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQs Section -->
+  
+  <section id="FAQs" class="FAQs-section text-white text-center py-5">
+    <div class="container">
+      <h2 class="text-center mb-4" style="color: black;">Frequently Asked Questions</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+              What if I miss my time slot?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">You can rebook another time slot easily through the booking section.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faqTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+              Can someone book on my behalf?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Yes, family members or caregivers can book a slot using your ID number.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!-- Help Center Section-->
+<section id="help" class="help-center">
+  <div class="container">
+    <h2 class="text-center mb-4">Help Center</h2>
+    <div class="row g-4">
+      
+      <!-- Need Assistance -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-headset icon mb-3"></i>
+            <h5 class="card-title">Need Assistance?</h5>
+            <p class="card-text">Call our toll-free line: <strong>0800 123 456</strong> for help with bookings.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Can't Access Internet -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-wifi-slash icon mb-3"></i>
+            <h5 class="card-title">Can't Access Internet?</h5>
+            <p class="card-text">Visit your nearest community center to get help booking a slot.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp Support -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fab fa-whatsapp icon mb-3"></i>
+            <h5 class="card-title">WhatsApp Support</h5>
+            <p class="card-text">Chat with us directly on WhatsApp for instant help.</p>
+            <a href="https://wa.me/+27721349231" target="_blank" class="btn btn-success mt-2">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visit Us -->
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fas fa-map-marker-alt icon mb-3"></i>
+            <h5 class="card-title">Visit Us</h5>
+            <p class="card-text">Our office is open during working hours. Come see us!</p>
+            <a href="https://www.google.com/maps/place/Sassa+Capricorn+District+Office/@-23.9161599,29.4529651,17z/data=!3m1!4b1!4m6!3m5!1s0x1ec6d786639edc97:0x3149e470194018!8m2!3d-23.9161599!4d29.45554!16s%2Fg%2F11kmp2x9jn?entry=ttu&g_ep=EgoyMDI1MDQyMS4wIKXMDSoASAFQAw%3D%3Dhttps://www.google.com/maps/place/Sassa+Capricorn+District+Office/@-23.9161599,29.4529651,17z/data=!3m1!4b1!4m6!3m5!1s0x1ec6d786639edc97:0x3149e470194018!8m2!3d-23.9161599!4d29.45554!16s%2Fg%2F11kmp2x9jn?entry=ttu&g_ep=EgoyMDI1MDQyMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-primary mt-2">Open in Google Maps</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Contact Section--> 
+  
+  
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Contact Us</h2>
+      
+      <!-- modify this form HTML and place wherever you want your form -->
+<form class="row g-3"
+action="https://formspree.io/f/mqaqkbld"
+method="POST"
+>
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" name="name"  required>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="col-12">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+          <button type="submit" class="btn btn-success">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script type="module" src="queue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Bootstrap validation
+    (function () {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <div class="container">
+    <p class="mb-0">&copy; 2025 FlowServe. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

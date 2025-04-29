@@ -1,0 +1,15 @@
+{
+    "name": "mhlab/easygrant",
+    "autoload": {
+        "psr-4": {
+            "Mhlab\\Easygrant\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lehlogonolo Mhlaba",
+            "email": "mhlabahlogi@gmail.com"
+        }
+    ],
+    "require": {}
+}
